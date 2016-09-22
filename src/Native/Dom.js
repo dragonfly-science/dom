@@ -1,4 +1,4 @@
-var _elm_lang$dom$Native_Dom = function() {
+var _dragonfly_science$gorbachevd$Native_Dom = function() {
 
 function on(node)
 {
@@ -154,8 +154,8 @@ function height(options, id)
 }
 
 return {
-	onDocument: F3(on(document)),
-	onWindow: F3(on(window)),
+//	onDocument: F3(on(document)),
+//	onWindow: F3(on(window)),
 
 	focus: focus,
 	blur: blur,
