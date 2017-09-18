@@ -1,5 +1,15 @@
 var _dragonfly_science$gorbachevd$Native_Dom = function() {
 
+var fakeNode = {
+	getElementById: function() { return null; },
+	addEventListener: function() {},
+	removeEventListener: function() {}
+};
+
+var onDocument = on(typeof document !== 'undefined' ? document : fakeNode);
+var onWindow = on(typeof window !== 'undefined' ? window : fakeNode);
+var doc = (typeof document !== 'undefined') ? document : fakeNode;
+
 function on(node)
 {
 	return function(eventName, decoder, toTask)
@@ -35,7 +45,7 @@ function withNode(id, doStuff)
 	{
 		rAF(function()
 		{
-			var node = document.getElementById(id);
+			var node = doc.getElementById(id);
 			if (node === null)
 			{
 				callback(_elm_lang$core$Native_Scheduler.fail({ ctor: 'NotFound', _0: id }));
@@ -154,8 +164,8 @@ function height(options, id)
 }
 
 return {
-//	onDocument: F3(on(document)),
-//	onWindow: F3(on(window)),
+	onDocument: F3(onDocument),
+	onWindow: F3(onWindow),
 
 	focus: focus,
 	blur: blur,
